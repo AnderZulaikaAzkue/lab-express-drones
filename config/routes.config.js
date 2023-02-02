@@ -11,6 +11,9 @@ const common = require('../controllers/common.controller');
 router.get('/', common.home);
 router.get('/drones', drones.list);
 
+router.get("/drones/new", drones.create);
+router.post("/drones", drones.doCreate);
+
 module.exports = router;
 
 

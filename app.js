@@ -14,8 +14,13 @@ app.set('views', `${__dirname}/views`);
 
 app.use(express.static(`${__dirname}/public`))
 
+// es un middleware para hacer el 'res' de los post del formulario
+app.use(express.urlencoded());
 
+//para todas las peticiones hagan log
 app.use(logger('dev'));
+
+//middleware para no tener que escribir req.path en cada una de las vistas
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   next();
