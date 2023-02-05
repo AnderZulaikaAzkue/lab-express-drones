@@ -11,6 +11,18 @@ module.exports.list = (req, res, next) => {
 .catch ((error) => next(error))
 }
 
+module.exports.create = (req, res) => {
+  res.render("drones/create-form");
+};
+
+module.exports.doCreate = (req, res, next) => {
+  Drone.create(req.body)
+    .then(() => {
+      res.redirect("/drones");
+    })
+    .catch(next);
+};
+
 /*router.get('/drones/create', (req, res, next) => {
   // Iteration #3: Add a new drone
   // ... your code here

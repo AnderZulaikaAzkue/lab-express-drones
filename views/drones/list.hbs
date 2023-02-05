@@ -1,9 +1,11 @@
 <h2>Available drones</h2>
+<a class="btn btn-primary" href="/drones/create-form">New Drone</a>
 
+<hr>
 {{#each drones as |drone|}}
   <div class="border mb-3 p-2">
     <p>{{drone.name}}</p>
-    <small>{{drone.propellers}}</small>
-    <small>{{drone.maxSpeed}}</small>
+    <small>Propellers:{{drone.propellers}}</small>
+    <small>Max speed:{{drone.maxSpeed}}</small>
   </div>
 {{/each}}

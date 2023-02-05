@@ -1,11 +1,10 @@
 require('dotenv').config();
+require('./config/db.config');
 
 const express = require('express');
 const logger = require('morgan');
 
 const app = express();
-
-require('./config/db.config');
 
 require('./config/hbs.config');
 
@@ -15,7 +14,7 @@ app.set('views', `${__dirname}/views`);
 app.use(express.static(`${__dirname}/public`))
 
 // es un middleware para hacer el 'res' de los post del formulario
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:false}));
 
 //para todas las peticiones hagan log
 app.use(logger('dev'));
