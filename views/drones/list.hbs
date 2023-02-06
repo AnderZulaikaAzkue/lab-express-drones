@@ -8,5 +8,9 @@
     <small>Propellers:{{drone.propellers}}</small>
     <small>Max speed:{{drone.maxSpeed}}</small>
     <a href="/drones/{{drone.id}}/update-form" class="btn btn-primary mb-2"> Edit</a>
+   <form action="/drones/{{drone.id}}/delete" method="POST">
+    <button class="btn btn-danger">DELETE</button>
+</form>
   </div>
+ 
 {{/each}}

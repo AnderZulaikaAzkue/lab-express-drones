@@ -42,6 +42,14 @@ module.exports.doUpdate = (req, res, next) => {
     });
 };
 
+module.exports.delete = (req, res, next) => {
+  Drone.findByIdAndDelete(req.params.id)
+    .then((drone) => {
+      res.redirect("/drones");
+    })
+    .catch(next);
+};
+
 /*router.get('/drones/create', (req, res, next) => {
   // Iteration #3: Add a new drone
   // ... your code here

@@ -23,6 +23,7 @@ router.get("/drones/create-form", drones.create);
 router.post("/drones", drones.doCreate);
 router.get("/drones/:id/update-form", drones.update);
 router.post("/drones/:id", drones.doUpdate); 
+router.post("/drones/:id/delete", drones.delete);
 
 module.exports = router;
 
