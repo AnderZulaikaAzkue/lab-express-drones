@@ -21,6 +21,8 @@ router.get('/', common.home);
 router.get('/drones', drones.list);
 router.get("/drones/create-form", drones.create);
 router.post("/drones", drones.doCreate);
+router.get("/drones/:id/update-form", drones.update);
+router.post("/drones/:id", drones.doUpdate); 
 
 module.exports = router;
 
