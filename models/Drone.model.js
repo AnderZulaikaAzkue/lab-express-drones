@@ -4,10 +4,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const droneSchema = new Schema ({
-    name: String,
-    propellers: Number,
-    maxSpeed: Number,
-})
+    name: {
+        type:'String',
+        require: 'Drone name is required'
+    },
+    propellers: {
+       type: 'Number',
+       require: 'Propeller info is required'
+    },
+    maxSpeed:{ 
+       type: 'Number',
+       require: 'Max Speed is required'
+    },
+});
 
 
 const Drone = mongoose.model('Drone', droneSchema);

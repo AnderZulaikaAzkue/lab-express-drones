@@ -1,6 +1,8 @@
-
 // require the Drone model here
 const Drone = require('../models/drone.model');
+
+//cons mongoose lo hemos puesto para que funciones el error mongoose del doCreate del formulario
+const mongoose = require("mongoose");
 
 module.exports.list = (req, res, next) => {
   // Iteration #2: List the drones
@@ -15,12 +17,19 @@ module.exports.create = (req, res, next) => {
   res.render("drones/create-form");
 };
 
+
 module.exports.doCreate = (req, res, next) => {
   Drone.create(req.body)
     .then(() => {
       res.redirect("/drones");
     })
-    .catch(next);
+    .catch((err) => {
+      if (err instanceof mongoose.Error.ValidationError) {
+        res.render("drones/create-form", { errors: err.errors, drone: req.body });
+      } else {
+        next(err);
+      }
+    });
 };
 
 module.exports.update = (req, res, next) => {

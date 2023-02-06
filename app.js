@@ -28,5 +28,13 @@ app.use((req, res, next) => {
 const routes = require('./config/routes.config');
 app.use('/', routes);
 
+//middleware  de error para todos los catch (), importante, de pone despeus de las routes, no antes
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500);
+  res.send("Ops, something went wrong");
+});
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Application is running at port ${port}`));
