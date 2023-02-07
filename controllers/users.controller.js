@@ -20,6 +20,10 @@ module.exports.doCreate = (req, res, next) => {
     });
 };
 
+module.exports.login = (req, res) => {
+    res.render("users/login");
+  };
+
 const sessions = {};
 
 module.exports.doLogin = (req, res, next) => {
@@ -34,7 +38,7 @@ module.exports.doLogin = (req, res, next) => {
             sessions[sessionId] = user.id;
 
             res.set("Set-Cookie", `sessionid=${sessionId}`);
-            res.redirect("/tweets");
+            res.redirect("/drones");
           }
         })
         .catch(next);
